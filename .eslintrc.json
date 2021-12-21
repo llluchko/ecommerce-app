@@ -25,6 +25,7 @@
             1,
             {
                 "singleQuote": true,
+                "jsxSingleQuote": true,
                 "semi": true
             }
         ],
