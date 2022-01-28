@@ -19,16 +19,16 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
-  (collections) =>
     // return array with the keys from an object
-    Object.keys(collections).map((key) => collections[key])
+    collections => collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
 // Memoize does the same idea of memoization as reselect does for our selectors, except this time we're memoizing the return of our function which returns our selector:
 export const selectCollection = memoize((collectionUrlParam) =>
   createSelector(
     [selectCollections],
-    (collections) => collections[collectionUrlParam]
+    // there is now data here -> render empty state if I need to
+    (collections) => (collections ? collections[collectionUrlParam] : null)
     // collections.find(
     //   (collection) => collection.id == COLLECTION_ID_MAP[collectionUrlParam]
     // )
