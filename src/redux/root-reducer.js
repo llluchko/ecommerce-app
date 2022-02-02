@@ -6,6 +6,7 @@ import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
 
 import { persistReducer } from 'redux-persist';
+// this is the local storage from window object in the browser; also session storage is possible
 import storage from 'redux-persist/lib/storage';
 
 const pesristConfig = {
