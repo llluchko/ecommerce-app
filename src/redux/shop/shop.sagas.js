@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 import {
   firestore,
@@ -30,8 +30,10 @@ export function* fetchCollectionsAsync() {
 }
 
 export function* fetchCollectionsStart() {
-  // takeEvery non-blocking call - to not stop our app
-  yield takeEvery(
+  // takeEvery non-blocking call - to not stop our app / spotting new Sagas on every call
+  // do we want to block the code or no -> use take() for blocking
+  // takeLatest => use only the last one (don't call the api separate times)
+  yield takeLatest(
     // listening here...
     ShopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionsAsync
