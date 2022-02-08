@@ -24,7 +24,8 @@ export const selectCollectionsForPreview = createSelector(
     collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
-// Memoize does the same idea of memoization as reselect does for our selectors, except this time we're memoizing the return of our function which returns our selector:
+// Memoize does the same idea of memoization as reselect does for our selectors,
+// except this time we're memoizing the return of our function which returns our selector:
 export const selectCollection = memoize((collectionUrlParam) =>
   createSelector(
     [selectCollections],
